@@ -1,0 +1,18 @@
+
+sourceList:
+1  IVANOV         
+2  IVANOV         
+3  IVANENKO       
+4  SIDOROV        
+5  SIDOROV        
+6  SMIRNOV        
+7  SIDOROV        
+8  VOLKOV         
+9  SIDOROV        
+
+modifiedList:
+1  IVANOV         
+2  IVANOV         
+3  IVANENKO       
+6  SMIRNOV        
+8  VOLKOV         

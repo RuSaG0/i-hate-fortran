@@ -1,0 +1,673 @@
+\documentclass[12pt, a4paper]{report}
+\usepackage[T2A]{fontenc}	% Кодировка
+\usepackage[utf8]{inputenc}	% Кодировка исходного текста
+\usepackage[english,russian]{babel}	% Локализация и переносы
+\usepackage{cmap}	% Поиск и копирование в PDF
+\usepackage{listings}
+
+\usepackage{xcolor}
+\usepackage{biblatex}
+\usepackage{geometry}	% Поля
+	\geometry{left=30mm, right=10mm, top=20mm, bottom=20mm}
+\usepackage{indentfirst}
+\usepackage{csquotes}
+\usepackage{nameref}
+\usepackage{hyperref}
+\usepackage{indentfirst}
+\usepackage{setspace}
+\onehalfspacing
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    pdftitle={Overleaf Example},
+    pdfpagemode=FullScreen,
+    }
+\usepackage{enumitem}
+\usepackage{graphicx}
+\graphicspath{ {./images} }
+\usepackage{cmap}
+\usepackage{graphicx}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.92,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=7pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+\title{3.1 Титульный лист}
+
+\begin{document}
+
+\thispagestyle{empty}	% Отключаем колонтитулы
+
+\begin{center}
+	Санкт-Петербургский политехнический университет Петра Великого\\
+	Институт компьютерных наук и технологий\\
+	\bfseries{Высшая школа программной инженерии}
+\end{center}
+
+\vspace{20ex} % Задаем размер вертикального промежутка в явном виде
+
+\begin{center}
+	\begin{huge} {\bfseries{\scshape курсовая работа}} \end{huge}
+
+	\vspace{3ex}
+
+	по дисциплине: «Алгоритмы и структуры данных»
+\end{center}
+
+\vspace{30ex}
+
+\noindent Выполнил\\
+студент гр. в3530904/10021\hfill \begin{minipage}{0.6\textwidth} \hfill Р.Н.
+Мирзоев\end{minipage}
+
+\vspace{3ex}
+
+\noindent Руководитель\\
+старший преподаватель\hfill \begin{minipage} {0.6\textwidth}\hfill С.А. Федоров\end{minipage}
+
+\vspace{3ex}
+
+\hfill \begin{minipage}{0.6\textwidth} \hfill «\underline{\hspace{0.2cm}{25}\hspace{0.2cm}}»\underline{\hspace{0.2cm}{мая}\hspace{0.2cm}} \underline{2022} г.\end{minipage}
+
+\vfill
+
+\begin{center}
+	Санкт-Петербург\\ 
+	2022
+\end{center}
+
+\lstset{style=mystyle}
+\thispagestyle{empty}
+
+
+\tableofcontents
+\newpage
+
+\addcontentsline{toc}{section}{Введение}
+\begin{center}
+\section*{Введение}
+\end{center}
+\addcontentsline{toc}{subsection}{Лабораторная работа}
+\subsection*{Лабораторная работа}
+Дан список группы в виде:\\
+
+\begin{tabular}{ccccc}
+ФАМИЛИЯ & ГОД РОЖДЕНИЯ & СЛУЖБА В АРМИИ & ПРОПИСКА & ПОЛ \\
+15 симв. & 4 симв. & 3 симв. & 1 симв. & 1 симв.\\
+\end{tabular} \\
+
+Пример входного файла (в графе прописки буква П стоит у петербуржцев, с — у гостей
+Санкт-Петербурга):\\
+\begin{tabular}{ccccc}
+Иванов & 1992 & нет & П & М \\
+Петров & 1993 & да & С & М\\
+\end{tabular} \\
+
+    Отсортировать в алфавитном порядке по отдельности списки петербуржцев и гостей
+Санкт-Петербурга, служивших в армии. Пример выходного файла:\\
+
+\begin{tabular}{ccc}
+Служившие петербуржцы: \\
+Барабашкин & 1992 & М \\
+Служившие гости города: \\
+Петров & 1993 & М
+\end{tabular} \\
+
+\addcontentsline{toc}{subsection}{Цели и Задачи}
+\subsection*{Цели}
+Цель работы — выбор структуры данных для решения поставленной задачи на современных микроархитектурах. 
+
+\subsection*{Задачи:}
+\begin{enumerate}
+    \item Реализовать задание с использованием массивов строк.
+    \item Реализовать задание с использованием массивов символов.
+    \item Реализовать задание с использованием массива структур или структуры массивов.  
+    \item Реализовать задание с использованием динамического списка.
+    \item Провести анализ на регулярный доступ к памяти.
+    \item Провести анализ на векторизацию кода.
+    \item Провести тестирование производительности.
+    \item Провести сравнительный анализ реализаций.
+\end{enumerate}
+
+
+\newpage
+
+\addcontentsline{toc}{section}{ГЛАВА 1.  "Реализация и анализ применения различных структур данных".}
+\begin{center}
+\section*{ГЛАВА 1.  "Реализация и анализ применения различных структур данных".}
+\addcontentsline{toc}{subsection}{1.1. Реализовать задание с использованием массивов строк.}
+\subsection*{1.1. Реализовать задание с использованием массивов строк.}
+\end{center}
+
+В первой лабораторной работе используется массив строк. Из преимуществ - регулярный доступ к памяти, т.к. данные сплошные, а также простота реализации. В Приложении 1 показан входной файл.
+
+Объявление данных массива строк можно увидеть в Листинге 1:
+
+\begin{lstlisting}[language=Fortran]
+    integer(I_), parameter                                  ::  CANDIDATES_AMOUNT = 5, & 
+                                                                SURNAME_LENGTH = 15, &
+                                                                DATE_LENGTH = 4, &
+                                                                MILITARY_LENGTH = 3, &
+                                                                REGISTRATION_LENGTH = 1
+
+   character(SURNAME_LENGTH, kind = CH_)                    :: surnameList(CANDIDATES_AMOUNT) = ""
+   character(SURNAME_LENGTH, kind = CH_), allocatable       :: SPBMilitarySurnameList(:), & 
+                                                                guestMilitarySurnameList(:)
+                                                           
+   character(DATE_LENGTH, kind = CH_)                       :: birthdayList(CANDIDATES_AMOUNT) = ""
+   character(DATE_LENGTH, kind = CH_), allocatable          :: SPBMilitaryBirthdayList(:), &
+                                                               guestMilitaryBirthdayList(:)
+                                                           
+   character(kind = CH_)                                    :: genderList(CANDIDATES_AMOUNT) = ""
+   character(REGISTRATION_LENGTH, kind = CH_), allocatable  :: SPBMilitaryGenderList(:), &
+                                                               guestMilitaryGenderList(:)
+   
+   character(MILITARY_LENGTH, kind = CH_)                   :: isServedList(CANDIDATES_AMOUNT) = ""
+
+\end{lstlisting}
+\begin{center}
+Листинг 1 - Инициализация массива символов
+\end{center}
+
+Чтение строк представлено в Листинге 2:
+
+\begin{lstlisting}[language=Fortran]
+   open (file = input_file, encoding = E_, newunit = In)
+      format = '(5(a, 1x))'
+      read (In, format, iostat = IO) & 
+          (surnameList(i), birthdayList(i), isServedList(i), registrationList(i), genderList(i), i = 1, CANDIDATES_AMOUNT)
+   close (In)
+
+   Out = OUTPUT_UNIT
+   open (Out, encoding = E_)
+   select case(io)
+      case(0)
+      case(IOSTAT_END)
+         write (Out, '(a)') "End of file has been reached while reading class list."
+      case(1:)
+         write (Out, '(a)') "Error while reading class list: ", io
+      case default
+         write (Out, '(a)') "Undetermined error has been reached while reading class list: ", io
+   end select
+\end{lstlisting}
+\begin{center}
+Листинг 2 - Считывание данных
+\end{center}
+
+Основные операторы обработки данных представлены в Листинге 3.
+\begin{lstlisting}[language=Fortran]
+!VVV direct access
+   SPBMilitaryMask = registrationList == P_CHARSEt  .and. &
+                     isServedList /= NOT_SERVED_CHARSET
+
+   SPBMilitaryAmount = Count(SPBMilitaryMask)
+   SPBMilitaryIndexesList = Pack(indexes, SPBMilitaryMask)
+! Non direct access
+ do concurrent (i = 1:guestMilitaryAmount)
+      guestMilitarySurnameList(i)  = surnameList(guestMilitaryIndexesList(i))
+      guestMilitaryBirthdayList(i)  = birthdayList(guestMilitaryIndexesList(i))
+      guestMilitaryGenderList = genderList(guestMilitaryIndexesList(i))
+ end do
+\end{lstlisting}
+\begin{center}
+Листинг 3 - Код модуля Group-Process
+\end{center}
+\newpage
+
+\begin{center}
+\addcontentsline{toc}{subsection}{1.2. Реализовать задание с использованием массивов символов.}
+\subsection*{1.2. Реализовать задание с использованием массивов символов.}
+\end{center}
+
+Во второй лабораторной работе используется массив символов.
+
+Объявление данных двумерного массива символов представлен на Листинге 4.
+\begin{lstlisting}[language=Fortran]
+integer(I_), parameter              :: CANDIDATES_AMOUNT = 5, SURNAME_LENGTH = 15, DATE_LENGTH = 4, MILITARY_LENGTH = 3
+   character(kind = CH_), parameter    :: NOT_SERVED_CHARSET(*) = [Char(1053, CH_), Char(1077, CH_), Char(1090, CH_)]
+   character(kind = CH_), parameter    :: P_CHARSET = Char(1055, CH_)
+   character(kind = CH_), parameter    :: G_CHARSET = Char(1057, CH_)
+   character(:), allocatable           :: input_file, output_file
+
+   character(kind = CH_)               :: surnameList(SURNAME_LENGTH, CANDIDATES_AMOUNT)  = "", &
+                                          birthdayList(DATE_LENGTH,CANDIDATES_AMOUNT) = "", &
+                                          isServedList(MILITARY_LENGTH,CANDIDATES_AMOUNT)  = "",&
+                                          registrationList(CANDIDATES_AMOUNT) = "", &
+                                          genderList(CANDIDATES_AMOUNT) = ""
+                           
+   character(kind = CH_), allocatable  :: SPBSurnames(:, :), guestSurnames(:, :)
+   character(kind = CH_), allocatable  :: SPBBirthdays(:, :), guestBirthdays(:, :)
+   character(kind = CH_), allocatable  :: SPBGenders(:), guestGenders(:)
+\end{lstlisting}
+\begin{center}
+Листинг 4 - Инициализация массива символов
+\end{center}
+
+В данной лабораторной работе важно помнить о том, что в технологии Fortran массивы хранятся по столбцам. Именно поэтому можно ошибиться, написав программу, с нерегулярным доступом к памяти. Из-за этих причин, в дальнейшем, структура массив символов будет отнесена к стуктурам с потенциальной векторизацией. Поэтому хранение фамилии - surnameList(SURNAME\_LENGTH, CANDIDATES\_AMOUNT) выгоднее, чем surnameList(CANDIDATES\_AMOUNT, SURNAME\_LENGTH), т.к. индексы хранятся по столбцам, для более эффективного доступа к памяти. Чтобы векторизовать код, требуется выравнивание данных \\
+Пример правильного и неправильного чтения представлен в Листинге 5. 
+ 
+\begin{lstlisting}[language=Fortran]
+  subroutine readData(Input_File, surnameList, birthdayList, isServedList, registrationList, genderList)
+      character(*)                     :: Input_File
+      character(kind = CH_)            :: surnameList(:, :), birthdayList(:, :), isServedList(:, :), &
+                                          registrationList(:), genderList(:)
+
+      intent (in)                      :: Input_File
+      intent (out)                     :: surnameList, birthdayList, isServedList, registrationList, genderList
+
+      integer In, IO, i
+      character(:), allocatable        :: format
+      
+      open (file = Input_File, encoding = E_, newunit = In)
+         format = '(' // SURNAME_LENGTH // 'a1, 1x, ' // DATE_LENGTH // 'a1, 1x, ' // &
+            MILITARY_LENGTH // 'a1, 1x, '//'a1, 1x, '//'a1, 1x)'
+
+        ! VVV direct access
+         read (In, format, iostat = IO) &
+              (surnameList(:, i), birthdayList(:, i), isServedList(:, i), registrationList(i), &
+              genderList(i), i = 1, CANDIDATES_AMOUNT)
+              
+        ! XXX non-direct access
+        read (In, format, iostat = IO) &
+              (surnameList(i, :), birthdayList(i, :), isServedList(i, :), registrationList(i), &
+              genderList(i), i = 1, CANDIDATES_AMOUNT)
+         
+         call Handle_IO_status(IO, "reading class list")
+      close (In)
+   end subroutine readData
+\end{lstlisting}
+\begin{center}
+Листинг 5 - Считывание данных
+\end{center}
+
+Основные операторы обработки данных представлены в Листинге 6. В данном листинге Векторизация кода присутствует, а также происходит регулярный доступ к памяти. 
+\begin{lstlisting}[language=Fortran]
+   do concurrent (i = 1:militaryAmount)
+        ! direct access
+         filteredSurnameList(:, i)  = surnameList(:,militaryIndexes(i))
+         filteredBirthdayList(:, i)  = birthdayList(:,militaryIndexes(i))
+         filteredGenderList(i)= genderList(militaryIndexes(i))
+      end do
+         \end{lstlisting}
+\begin{center}
+Листинг 6 - Код модуля Group-Process
+\end{center}
+
+\newpage
+
+
+
+\begin{center}
+\addcontentsline{toc}{subsection}{1.3. Реализовать задание с использованием массива структур или структуры массивов.}
+\subsection*{1.3. Реализовать задание с использованием массива структур или структуры массивов. }
+\end{center}
+
+В данном разделе используется массив структур для более удобной работы с данными,
+Объявление структуры представлено на Листинге 7.
+\begin{lstlisting}[language=Fortran]
+  implicit none
+   integer, parameter :: CANDIDATES_AMOUNT = 5
+   integer, parameter :: SURNAME_LENGTH  = 15
+   integer, parameter :: DATE_LENGTH = 4
+   integer, parameter :: MILITARY_LENGTH = 3
+
+   type CandidateType
+      character(SURNAME_LENGTH, kind=CH_)             :: surname           = ""
+      character(DATE_LENGTH, kind=CH_)                :: birthDate         = ""
+      character(MILITARY_LENGTH, kind=CH_)            :: isServedCharset   = ""
+      character(kind=CH_)                             :: registrationCharset  = ""
+      character(kind=CH_)                             :: genderChar        = ""
+   end type CandidateType
+   
+\end{lstlisting}
+\begin{center}
+Листинг 7 - Инициализация структуры массивов
+\end{center}
+
+Формирование двоичного файла и его чтение представлено в Листинге 8:
+\begin{lstlisting}[language=Fortran]
+  subroutine createDataFile(Input_File, Data_File)
+      character(*), intent(in)   :: Input_File, data_file
+      
+      type(CandidateType)        :: candidate
+      integer                    :: In, Out, IO, i, recl
+      character(:), allocatable  :: format
+      
+      open (file=Input_File, encoding=E_, newunit=In)
+      recl = (SURNAME_LENGTH + DATE_LENGTH + MILITARY_LENGTH  + 1 + 1)*CH_
+      open (file=Data_File, form='unformatted', newunit=Out, access='direct', recl=recl)
+         format = '(5(a, 1x))'
+         do i = 1, CANDIDATES_AMOUNT
+            read (In, format, iostat=IO) candidate
+            call Handle_IO_status(IO, "reading formatted class list, line " // i)
+            write (Out, iostat=IO, rec=i) candidate
+            call Handle_IO_status(IO, "creating unformatted file with class list, record " // i)
+         end do
+      close (In)
+      close (Out)
+   end subroutine createDataFile
+
+   function readClassList(Data_File) result(candidateList)
+      type(CandidateType)             :: candidateList(CANDIDATES_AMOUNT)
+      character(*), intent(in)        :: Data_File
+
+      integer In, IO, recl
+      
+      recl = ((SURNAME_LENGTH + DATE_LENGTH + MILITARY_LENGTH+ 1 + 1)*CH_) * CANDIDATES_AMOUNT
+      open (file=Data_File, form='unformatted', newunit=In, access='direct', recl=recl)
+         read (In, iostat=IO, rec=1) candidateList
+         call Handle_IO_status(IO, "reading unformatted class list")
+      close (In)
+   end function readClassList
+\end{lstlisting}
+\begin{center}
+Листинг 8 - Чтение из файла
+\end{center}
+
+Основные операторы обработки данных представлены в Листинге 9. В данном листинге Векторизация кода не присутствует.
+\begin{lstlisting}[language=Fortran]
+     pure subroutine lexComparer(candidateList)
+      type(CandidateType), intent(inout)  :: candidateList(:)
+      integer                             :: i, j
+      ! Non-direct access
+      do i = Size(candidateList), 2, -1
+         do j = 1, i - 1
+            if (candidateList(j+1)%surname < candidateList(j)%surname) &
+               candidateList([j+1, j]) = candidateList([j, j+1])
+         end do
+      end do
+   end subroutine lexComparer
+\end{lstlisting}
+\begin{center}
+Листинг 9 - Код модуля Group-Process
+\end{center}
+\newpage
+
+\newpage
+
+
+
+\begin{center}
+\addcontentsline{toc}{subsection}{1.4. Реализовать задание с использованием динамического списка.}
+\subsection*{1.4. Реализовать задание с использованием динамического списка.}
+\end{center}
+
+В данном разделе используется в качестве типа данных односвязный список.
+Объявление данных двумерного массива символов представлен на Листинге 10.
+\begin{lstlisting}[language=Fortran]
+   integer, parameter :: CANDIDATES_AMOUNT = 5
+   integer, parameter :: SURNAME_LENGTH = 15
+   integer, parameter :: DATE_LENGTH = 4
+   integer, parameter :: MILITARY_LENGTH = 3
+
+
+   type CandidateType
+      character(SURNAME_LENGTH, kind=CH_)          :: surname = ""
+      character(DATE_LENGTH, kind=CH_)             :: birthDate = ""
+      character(MILITARY_LENGTH, kind=CH_)         :: isServedCharset = ""
+      character(kind=CH_)                          :: registrationCharset = ""
+      character(kind=CH_)                          :: genderChar = ""
+      type(CandidateType), pointer                 :: next => Null()
+   end type CandidateType
+\end{lstlisting}
+\begin{center}
+Листинг 10 - Инициализация списка
+\end{center}
+
+
+Чтение строк представлено в Листинге 11:
+\begin{lstlisting}[language=Fortran]
+   subroutine readClassList(Input_File) result(Class_List)
+      type(CandidateType), pointer     :: Class_List
+      character(*), intent(in)         :: Input_File
+      integer  In
+
+      open (file=Input_File, encoding=E_, newunit=In)
+         Class_List => readCandidate(In)
+      close (In)
+   end function readClassList
+
+
+   recursive function readCandidate(In) result(candidate)
+      type(CandidateType), pointer     :: candidate
+      integer, intent(in)              :: In
+      integer  IO
+      character(:), allocatable        :: format
+      
+      allocate (candidate)
+      format = '('//CANDIDATES_AMOUNT//'(a, 1x))'
+      read (In, format, iostat=IO) & 
+            candidate%surname, candidate%birthDate, candidate%isServedCharset, & 
+            candidate%registrationCharset, candidate%genderChar
+
+      call Handle_IO_status(IO, "reading line from file")
+      if (IO == 0) then
+          candidate%next => readCandidate(In)
+      else
+         deallocate (candidate)
+         nullify (candidate)
+      end if
+   end function readCandidate
+\end{lstlisting}
+\begin{center}
+Листинг 11 - Чтение данных в список
+\end{center}
+
+Основные операторы обработки данных представлены в Листинге 12. В данном листинге Векторизация кода не присутствует.
+\begin{lstlisting}[language=Fortran]
+   pure recursive subroutine getListReg(candidateList, categoryList, registrationCharset, NOT_SERVED_CHARSET, categoryAmount)
+      type(CandidateType), intent(in)        :: candidateList
+      type(CandidateType), pointer           :: categoryList
+      character(*, kind = CH_), intent(in)   :: registrationCharset, NOT_SERVED_CHARSET
+      integer(I_), intent(inout)             :: categoryAmount
+      ! Non direct access
+      if (candidateList%registrationCharset == registrationCharset &
+         .and. candidateList%isServedCharset /= NOT_SERVED_CHARSET) then
+
+         categoryAmount = categoryAmount+1
+         allocate (categoryList, source = candidateList)
+         
+         if (Associated(candidateList%next)) &
+            call getListReg(candidateList%next, categoryList%next, registrationCharset, NOT_SERVED_CHARSET, categoryAmount)
+         else if (Associated(candidateList%next)) then
+            call getListReg(candidateList%next, categoryList, registrationCharset, NOT_SERVED_CHARSET, categoryAmount)
+         else
+            categoryList => Null()
+      end if
+   end subroutine getListReg
+ 
+   pure recursive subroutine lexComparer(candidate, N)
+      type(CandidateType), pointer, intent(inout)  :: candidate
+      integer, intent(in)                          :: N
+      
+      if (N >= 2) then
+         call dropDown(candidate, 1, N-1)
+         call lexComparer(candidate, N-1)
+   end if
+   end subroutine lexComparer
+
+   pure recursive subroutine dropDown(candidate, j, N)
+      type(CandidateType), pointer           :: candidate
+      integer, intent(in)                    :: j, N
+
+      if (candidate%next%surname < candidate%surname) &
+         call swapFromCurrent(candidate)
+
+      if (j < N) &
+         call dropDown(candidate%next, j+1, N)
+   end subroutine dropDown
+
+   pure subroutine swapFromCurrent(Current)
+      type(CandidateType), pointer  :: Current
+      type(CandidateType), pointer  :: tmpCandidate
+               
+      tmpCandidate => Current%next                         
+      Current%next => Current%next%next                        
+      tmpCandidate%next => Current             
+      Current => tmpCandidate           
+   end subroutine swapFromCurrent
+   
+\end{lstlisting}
+\begin{center}
+Листинг 12 - Код модуля Group-Process
+\end{center}
+\newpage
+
+
+\addcontentsline{toc}{section}{Глава 2. "Сравнение реализаций".}
+\begin{center}
+\section*{Глава 2. "Сравнение реализаций".}
+\end{center}
+
+В ходе выполнения лабораторной работы 1 было использовано 4 разных подхода для выполнения работы, которые отличались между собой структурами данных (1.1 - массив строк, 1.2 - массив символов, 1.3 - структура 1.5 - массивов, список) и реализуемыми модулями. Ниже в Таблице 1 представлено сравнение реализаций лабораторной работы 1. 
+
+Таблица 1 - Сравнение реализаций\\
+\begin{tabular}{ |p{3.5cm}|p{3cm}|p{3cm}|p{3cm}|p{3cm}|}
+\hline
+  &сплошные данные & регулярный доступ & векторизация & потенциальная векторизация\\
+\hline
+Массив строк  & + & + & + & -  \\
+\hline
+Массив символов  & -/+ & + & -/+ & +   \\
+\hline
+Массив структур  & - & + & + & -   \\
+\hline
+Динамический список  &- & - & - & -  \\
+\hline
+\end{tabular} \\
+
+\newpage
+
+\addcontentsline{toc}{section}{Глава 3. "Тестирование производительности".}
+\begin{center}
+\section*{Глава 3. "Тестирование производительности".}
+\end{center}
+
+Каждая из пяти лабораторных работ была протестирована на производительность. Для каждого приложения запускалось 3 теста и бралось его медианное значение в миллисекундах. Для этого была использована встроенная функция CPU\_TIME, которая возвращает значение, представляющее затраченное процессорное время в секундах. Исходная конфигурация указана в таблице 2. Результаты исследования в таблице 3. \\
+
+Пример использования указан в листинге 13:
+\begin{lstlisting}[language=Fortran]
+program test_cpu_time
+    real :: start, finish
+    call cpu_time(start)
+        ! put code to test here
+    call cpu_time(finish)
+    print '("Time = ",f6.3," seconds.")',finish-start
+end program test_cpu_time
+\end{lstlisting}
+\begin{center}
+Листинг 13 - Функция CPU\_TIME
+\end{center} 
+
+Данные считывались на основе исходного файла, указанном в листинге 14.
+
+\begin{lstlisting}[language=Fortran]
+! CANDIDATES_AMOUNT = 10 / 100 / 1000 / 10000
+k = CANDIDATES_AMOUNT / 5 
+   do i = 0, k-1
+   
+   open (file = input_file, encoding = E_, newunit = In)
+    format = '(5(a, 1x))'
+      read (In, format, iostat = IO) & 
+          (surnameList(i*5 + j), birthdayList(i*5 + j), isServedList(i*5 + j), &
+            registrationList(i*5 + j), genderList(i*5 + j), j = 1, 5)
+      close (In)
+    end do
+\end{lstlisting}
+
+\begin{center}
+Листинг 14 - Считывание данных для тестирования производительности
+\end{center} \\
+
+Таблица 2 - исходная конфигурация: \\
+\begin{tabular}{ |p{3.5cm}|p{6cm}|}
+\hline
+Процессор & AMD Ryzen 5 3600 6-core \\
+\hline
+ОЗУ & 16 Гб \\
+\hline
+ОС & FEDORA 36 \\
+\hline
+\end{tabular} \\
+
+
+Таблица 3 - Тестирование производительности \\
+\begin{tabular}{ |p{3.5cm}|p{3cm}|p{3cm}|p{3cm}|p{3cm}|}
+\hline
+  Стуктура / Кол-во входных значений & 10 & 100 & 1000 & 10 000\\
+\hline
+Массив строк  & 0.0001 & 0.0002 & 0.00020 & 0.1258  \\
+\hline
+Массив символов  & 0.0002 & 0.0005 & 0.00037 & 0.1411 \\
+\hline
+Массив структур (без хвостовой рекурсии)  & 0.0002 & Invalid memory & Invalid memory &  Invalid memory \\
+\hline
+Массив структур (с хвостовой рекурсией )  & 0.0002 & 0.0006 & 0.00038 & 0.0417   \\
+\hline
+Динамический список & 0.0002 & 0.0008 & 0.00062 & 0.1459 \\
+\hline
+\end{tabular} \\
+
+Если не будут появляться новые бизнес-требования к приложению и единственные изменения, которые будут происходить - увеличение количества входных данных, которых будет меньше  ~ 10 000, тогда оптимальной структурой для данной задачи можно считать массив строк. Если же требования могут в дальнейшем расширяться, тогда стоит присмотреться к массиву структур. 
+
+\newpage
+
+
+
+
+
+
+
+\newpage
+\addcontentsline{toc}{section}{Заключение}
+\section*{Заключение}
+В данной работе была написана программа сортировки в алфавитном порядке по отдельности списка петербуржцев и гостей Санкт-Петербурга, служивших в армии \\
+Также, в ходе работы были выполнены ряд задач :   
+\begin{enumerate}
+    \item Реализовать задание с использованием массивов строк.
+    \item Реализовать задание с использованием массивов символов.
+    \item Реализовать задание с использованием массива структур или структуры массивов.  
+    \item Реализовать задание с использованием динамического списка.
+    \item Провести анализ на регулярный доступ к памяти.
+    \item Провести анализ на векторизацию кода.
+    \item Провести тестирование производительности.
+    \item Провести сравнительный анализ реализаций.
+\end{enumerate}
+И в ходе выполнения данных задач была определена наиболее подходящая структура данных для лабораторной работы - массив структур. 
+\newpage
+
+
+\addcontentsline{toc}{section}{Приложение}
+\section*{Приложение}
+\addcontentsline{toc}{subsection}{Приложение 1}
+\subsection*{Приложение 1. Исходный список}
+\begin{tabular}{ccccc}
+Дудиков & 1997 & Да & П & М \\
+Тихонов &1988 & Да &  С & М \\ 
+Садовникова & 1997 & Нет & П & Ж \\ 
+Степин & 1998 &  Нет & С & М \\ 
+Воробъёва &1990 & Да &  П & Ж \\ 
+\end{tabular} \\
+
+
+\end{document}
